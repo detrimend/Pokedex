@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchPokemonList } from "./services/pokeApi";
+import { fetchPokemonList, fetchPokemonDetails } from "./services/pokeApi";
+import PokemonCard from "./components/PokemonCard";
+import "./App.css";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+
+  const handleSelect = (name) => {
+    console.log(`Selected pokemon: ${name}`);
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -16,11 +22,7 @@ function App() {
   return (
     <div className="grid">
       {pokemon.map((p) => (
-        <div key={p.id} className="card">
-          <p>#{p.id}</p>
-          <h2>{p.name}</h2>
-          <img src={p.sprites.front_default} alt={p.name} />
-        </div>
+        <PokemonCard key={p.id} pokemon={p} onSelect={handleSelect} />
       ))}
     </div>
   );

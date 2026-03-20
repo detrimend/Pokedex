@@ -1,0 +1,33 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+.card {
+	min-height: 220px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.card img {
+	width: 110px;
+	height: 110px;
+	object-fit: contain;
+}
+
+@media (max-width: 900px) {
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 520px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

@@ -18,5 +18,5 @@ export async function fetchPokemonList(limit = 12)
 export async function fetchPokemonDetails(nameOrId)
 {
     const result = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
-    return result.json
+    return result.json()
 }
