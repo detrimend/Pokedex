@@ -63,6 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  border-inline: 1px solid var(--border);
 }
 
 h1,

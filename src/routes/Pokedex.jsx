@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { fetchPokemonList, fetchPokemonDetails } from "./services/pokeApi";
-import PokemonCard from "./components/PokemonCard";
-import "./App.css";
+import { fetchPokemonList, fetchPokemonDetails } from "../services/pokeApi";
+import PokemonCard from "../components/PokemonCard";
+import "./Pokedex.css";
 
-function App() {
+function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
 
   const handleSelect = (name) => {
-    console.log(`Selected pokemon: ${name}`);
+    console.log(`Selected pokemon: ${name}`); // temp
   };
 
   useEffect(() => {
@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default Pokedex;
