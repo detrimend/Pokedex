@@ -7,7 +7,7 @@
 }
 
 .card {
-	min-height: 220px;
+	min-height: 190px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
