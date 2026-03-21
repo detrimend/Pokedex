@@ -1,14 +1,34 @@
 import "../index.css"
-import { Link, Outlet } from "react-router-dom"
+import "./Root.css"
+import { NavLink, Outlet } from "react-router-dom"
 
 export default function App() {
     return (
-        <div>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
+        <div className="app-container">
+            <nav className="navbar" aria-label="Primary">
+                <div className="navbar-brand">Pokedex</div>
+                <div className="navbar-links">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? "navbar-link is-active" : "navbar-link"
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            isActive ? "navbar-link is-active" : "navbar-link"
+                        }
+                    >
+                        About
+                    </NavLink>
+                </div>
             </nav>
-            <Outlet />
+            <main className="page-content">
+                <Outlet />
+            </main>
         </div>
     )
 }
