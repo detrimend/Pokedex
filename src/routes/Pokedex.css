@@ -20,6 +20,27 @@
 	object-fit: contain;
 }
 
+.pagination-controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	padding: 0 24px 24px;
+}
+
+.pagination-controls button {
+	border: 0;
+	border-radius: 8px;
+	padding: 8px 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
 @media (max-width: 900px) {
 	.grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
