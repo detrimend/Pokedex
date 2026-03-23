@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { fetchPokemonDetails } from "../services/pokeApi"
+import DetailCard from "../components/DetailCard"
 
 function PokemonDetails() {
   const { name } = useParams()
@@ -9,33 +10,84 @@ function PokemonDetails() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    if (!name) {
+      setPokemonDetails(null)
+      setError("No pokemon selected.")
+      setLoading(false)
+      return
+    }
+
+    let isCancelled = false
+
     async function loadData() {
       setLoading(true)
       setError(null)
+      setPokemonDetails(null)
 
       try {
         const data = await fetchPokemonDetails(name)
-        setPokemonDetails(data)
+
+        if (!data?.id) {
+          throw new Error("Pokemon not found.")
+        }
+
+        if (!isCancelled) {
+          setPokemonDetails(data)
+        }
       } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "Failed to load pokemon details.",
-        )
+        if (!isCancelled) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Failed to load pokemon details.",
+          )
+        }
       } finally {
-        setLoading(false)
+        if (!isCancelled) {
+          setLoading(false)
+        }
       }
     }
 
     loadData()
+
+    return () => {
+      isCancelled = true
+    }
   }, [name])
 
-  return (
-    <>
+  if (loading) {
+    return (
       <div>
-        <p>Pokemon: {name}</p>
+        <Link to="/">Back to list</Link>
+        <p>Loading...</p>
       </div>
-    </>
+    )
+  }
+
+  if (error) {
+    return (
+      <div>
+        <Link to="/">Back to list</Link>
+        <p>{error}</p>
+      </div>
+    )
+  }
+
+  if (!pokemonDetails) {
+    return (
+      <div>
+        <Link to="/">Back to list</Link>
+        <p>No details available.</p>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <Link to="/">Back to list</Link>
+      <DetailCard pokemon={pokemonDetails} />
+    </div>
   )
 }
 
