@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { fetchPokemonList, fetchPokemonDetails } from "../services/pokeApi"
+import { useNavigate } from "react-router-dom"
+import { fetchPokemonList } from "../services/pokeApi"
 import PokemonCard from "../components/PokemonCard"
 import "./Pokedex.css"
 
@@ -8,13 +9,12 @@ function Pokedex() {
   const [page, setPage] = useState(0) // init value for page = 0
   const [hasNext, setHasNext] = useState(false)
   const [hasPrev, setHasPrev] = useState(false)
-  const [selectedPokemon, setSelectedPokemon] = useState(null)
+  const navigate = useNavigate()
 
   const PAGE_SIZE = 12
 
   const handleSelect = (name) => {
-    console.log(`Selected pokemon: ${name}`) // temp
-    setSelectedPokemon(name)
+    navigate(`/pokemon/${name}`)
   }
 
   useEffect(() => {
