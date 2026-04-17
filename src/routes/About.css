@@ -1,0 +1,47 @@
+.about-page {
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.about-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--social-bg);
+  text-align: left;
+}
+
+.about-card h1 {
+  margin: 0 0 12px;
+}
+
+.about-card p {
+  margin: 0 0 12px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+.about-card a {
+  color: var(--text-h);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.about-card a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .about-page {
+    padding: 24px;
+  }
+
+  .about-card {
+    padding: 18px;
+  }
+}
