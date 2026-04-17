@@ -1,3 +1,27 @@
+.type-frame-group {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
 .type-frame {
-    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid black;
+}
+
+.type-frame p {
+    margin: 0;
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 800;
+    -webkit-text-stroke: 2px black;
+    paint-order: stroke fill;
 }
