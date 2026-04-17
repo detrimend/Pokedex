@@ -1,13 +1,37 @@
 import SpriteFrame from "./SpriteFrame"
 import TypeFrame from "./TypeFrame"
+import "./DetailCard.css"
 
 function DetailCard({ pokemon }) {
-
   return (
-    <>
-      <SpriteFrame pokemon={pokemon}></SpriteFrame>
-      <TypeFrame pokemon={pokemon}></TypeFrame>
-    </>
+    <section className="detail-card-grid">
+      <div className="detail-card-grid__name">
+        <h2>{pokemon.name}</h2>
+      </div>
+      <div className="detail-card-grid__sprite">
+        <SpriteFrame pokemon={pokemon} />
+      </div>
+      <div className="detail-card-grid__types">
+        <TypeFrame pokemon={pokemon} />
+      </div>
+      <div className="detail-card-grid__description">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+          varius, leo ut ornare maximus, lorem turpis gravida purus, commodo
+          ornare turpis ipsum in dui. Praesent vel dui at dui consectetur mattis
+          at et massa. Quisque aliquam sodales ex nec lobortis. Pellentesque
+          quis imperdiet sapien, eu aliquet lacus. In finibus euismod urna, at
+          rutrum purus iaculis non. Nullam tristique est libero, vel semper
+          nulla bibendum nec. Duis condimentum justo at turpis efficitur
+          volutpat. Proin sed consectetur nisl. Quisque facilisis elit urna, et
+          molestie eros ultrices ut. Duis tempor enim accumsan, condimentum
+          justo nec, pretium nulla. Nam faucibus ante vel accumsan lacinia.
+          Proin ullamcorper nunc urna, ac tempus dui tristique sed. Vestibulum
+          interdum nisl a dolor maximus, ut porttitor nunc pulvinar. Maecenas
+          congue vitae odio molestie gravida. 
+        </p>
+      </div>
+    </section>
   )
 }
 

@@ -1,5 +1,5 @@
 .sprite-frame {
-  width: min(100%, 250px);
+  
   aspect-ratio: 1;
   margin-inline: auto;
   display: grid;

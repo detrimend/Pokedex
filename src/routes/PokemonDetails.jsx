@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { fetchPokemonDetails } from "../services/pokeApi"
 import DetailCard from "../components/DetailCard"
+import "./PokemonDetails.css"
 
 function PokemonDetails() {
   const { name } = useParams()
@@ -58,7 +59,7 @@ function PokemonDetails() {
 
   if (loading) {
     return (
-      <div>
+      <div className="details-page">
         <Link to="/">Back to list</Link>
         <p>Loading...</p>
       </div>
@@ -67,7 +68,7 @@ function PokemonDetails() {
 
   if (error) {
     return (
-      <div>
+      <div className="details-page">
         <Link to="/">Back to list</Link>
         <p>{error}</p>
       </div>
@@ -76,7 +77,7 @@ function PokemonDetails() {
 
   if (!pokemonDetails) {
     return (
-      <div>
+      <div className="details-page">
         <Link to="/">Back to list</Link>
         <p>No details available.</p>
       </div>
@@ -84,7 +85,7 @@ function PokemonDetails() {
   }
 
   return (
-    <div>
+    <div className="details-page">
       <Link to="/">Back to list</Link>
       <DetailCard pokemon={pokemonDetails} />
     </div>

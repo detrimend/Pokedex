@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="app-container">
       <nav className="navbar" aria-label="Primary">
-        <div className="navbar-brand">Pokedex</div>
+        <div className="navbar-brand">Pokedex (WIP)</div>
         <div className="navbar-links">
           <NavLink
             to="/"

@@ -1,0 +1,10 @@
+.details-page {
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .details-page {
+    padding: 24px;
+  }
+}

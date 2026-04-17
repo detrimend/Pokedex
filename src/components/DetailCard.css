@@ -1,0 +1,49 @@
+.detail-card-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 30%) minmax(0, 1fr);
+	grid-template-rows: repeat(3, auto);
+	grid-template-areas:
+		"name ."
+		"sprite description"
+		"types description";
+	gap: 16px 24px;
+	align-items: start;
+}
+
+.detail-card-grid__name {
+	grid-area: name;
+    justify-self: start;
+    margin-left: 4%;
+}
+
+.detail-card-grid__name h2 {
+	margin: 0;
+	text-transform: capitalize;
+}
+
+.detail-card-grid__sprite {
+	grid-area: sprite;
+}
+
+.detail-card-grid__types {
+	grid-area: types;
+}
+
+.detail-card-grid__sprite,
+.detail-card-grid__types {
+	width: 100%;
+}
+
+.detail-card-grid__description {
+	grid-area: description;
+	padding: 12px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background: color-mix(in srgb, var(--bg) 88%, #fff 12%);
+	text-align: left;
+}
+
+.detail-card-grid__description p {
+	margin: 0;
+	line-height: 1.45;
+}
