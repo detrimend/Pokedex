@@ -22,13 +22,7 @@ function DetailCard({ pokemon }) {
           at et massa. Quisque aliquam sodales ex nec lobortis. Pellentesque
           quis imperdiet sapien, eu aliquet lacus. In finibus euismod urna, at
           rutrum purus iaculis non. Nullam tristique est libero, vel semper
-          nulla bibendum nec. Duis condimentum justo at turpis efficitur
-          volutpat. Proin sed consectetur nisl. Quisque facilisis elit urna, et
-          molestie eros ultrices ut. Duis tempor enim accumsan, condimentum
-          justo nec, pretium nulla. Nam faucibus ante vel accumsan lacinia.
-          Proin ullamcorper nunc urna, ac tempus dui tristique sed. Vestibulum
-          interdum nisl a dolor maximus, ut porttitor nunc pulvinar. Maecenas
-          congue vitae odio molestie gravida. 
+          nulla bibendum nec.
         </p>
       </div>
     </section>
