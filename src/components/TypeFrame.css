@@ -14,7 +14,7 @@
     min-width: 0px;
     padding: 6px 14px;
     border-radius: 999px;
-    border: 1px solid black;
+    border: 2px solid color-mix(in srgb, var(--text-h) 22%, var(--border));
 }
 
 .type-frame p {
