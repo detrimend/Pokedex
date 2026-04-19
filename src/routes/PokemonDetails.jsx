@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { fetchPokemonDetails } from "../services/pokeApi"
 import DetailCard from "../components/DetailCard"
 import "./PokemonDetails.css"
 
 function PokemonDetails() {
   const { name } = useParams()
+  const { state } = useLocation()
   const [pokemonDetails, setPokemonDetails] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const fromPage =
+    Number.isInteger(state?.fromPage) && state.fromPage > 0
+      ? state.fromPage
+      : null
+  const backTo = fromPage ? `/?page=${fromPage}` : "/"
 
   useEffect(() => {
     if (!name) {
@@ -60,7 +66,7 @@ function PokemonDetails() {
   if (loading) {
     return (
       <div className="details-page">
-        <Link to="/">Back to list</Link>
+        <Link to={backTo}>Back to list</Link>
         <p>Loading...</p>
       </div>
     )
@@ -69,7 +75,7 @@ function PokemonDetails() {
   if (error) {
     return (
       <div className="details-page">
-        <Link to="/">Back to list</Link>
+        <Link to={backTo}>Back to list</Link>
         <p>{error}</p>
       </div>
     )
@@ -78,7 +84,7 @@ function PokemonDetails() {
   if (!pokemonDetails) {
     return (
       <div className="details-page">
-        <Link to="/">Back to list</Link>
+        <Link to={backTo}>Back to list</Link>
         <p>No details available.</p>
       </div>
     )
@@ -86,7 +92,7 @@ function PokemonDetails() {
 
   return (
     <div className="details-page">
-      <Link to="/">Back to list</Link>
+      <Link to={backTo}>Back to list</Link>
       <DetailCard pokemon={pokemonDetails} />
     </div>
   )

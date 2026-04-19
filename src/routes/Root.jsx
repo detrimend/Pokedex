@@ -1,12 +1,14 @@
 import "../index.css"
 import "./Root.css"
-import { NavLink, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet } from "react-router-dom"
 
 export default function App() {
   return (
     <div className="app-container">
       <nav className="navbar" aria-label="Primary">
-        <div className="navbar-brand">Pokedex (WIP)</div>
+        <Link to="/" className="navbar-brand">
+          Pokedex (WIP)
+        </Link>
         <div className="navbar-links">
           <NavLink
             to="/"
@@ -22,7 +24,7 @@ export default function App() {
               isActive ? "navbar-link is-active" : "navbar-link"
             }
           >
-            About 
+            About
           </NavLink>
         </div>
       </nav>
