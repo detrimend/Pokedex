@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import { fetchPokemonDetails, fetchPokemonSpecies } from "../services/pokeApi"
+import BackButton from "../components/BackButton"
 import DetailCard from "../components/DetailCard"
 import "./PokemonDetails.css"
 
@@ -80,7 +81,7 @@ function PokemonDetails() {
   if (loading) {
     return (
       <div className="details-page">
-        <Link to={backTo}>Back to list</Link>
+        <BackButton to={backTo} />
         <p>Loading...</p>
       </div>
     )
@@ -89,7 +90,7 @@ function PokemonDetails() {
   if (error) {
     return (
       <div className="details-page">
-        <Link to={backTo}>Back to list</Link>
+        <BackButton to={backTo} />
         <p>{error}</p>
       </div>
     )
@@ -98,7 +99,7 @@ function PokemonDetails() {
   if (!pokemonDetails) {
     return (
       <div className="details-page">
-        <Link to={backTo}>Back to list</Link>
+        <BackButton to={backTo} />
         <p>No details available.</p>
       </div>
     )
@@ -106,7 +107,7 @@ function PokemonDetails() {
 
   return (
     <div className="details-page">
-      <Link to={backTo}>Back to list</Link>
+      <BackButton to={backTo} />
       <DetailCard pokemon={pokemonDetails} flavorText={flavorText} />
     </div>
   )
