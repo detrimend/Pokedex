@@ -27,3 +27,9 @@ export async function fetchPokemonDetails(nameOrId)
     const result = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
     return result.json()
 }
+
+export async function fetchPokemonSpecies(nameOrId)
+{
+    const result = await fetch(`${BASE_URL}/pokemon-species/${nameOrId}`)
+    return result.json()
+}

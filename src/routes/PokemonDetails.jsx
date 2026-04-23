@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
-import { fetchPokemonDetails } from "../services/pokeApi"
+import { fetchPokemonDetails, fetchPokemonSpecies } from "../services/pokeApi"
 import DetailCard from "../components/DetailCard"
 import "./PokemonDetails.css"
 
@@ -8,6 +8,7 @@ function PokemonDetails() {
   const { name } = useParams()
   const { state } = useLocation()
   const [pokemonDetails, setPokemonDetails] = useState(null)
+  const [flavorText, setFlavorText] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const fromPage =
@@ -19,6 +20,7 @@ function PokemonDetails() {
   useEffect(() => {
     if (!name) {
       setPokemonDetails(null)
+      setFlavorText("")
       setError("No pokemon selected.")
       setLoading(false)
       return
@@ -30,16 +32,28 @@ function PokemonDetails() {
       setLoading(true)
       setError(null)
       setPokemonDetails(null)
+      setFlavorText("")
 
       try {
-        const data = await fetchPokemonDetails(name)
+        const [detailsData, speciesData] = await Promise.all([
+          fetchPokemonDetails(name),
+          fetchPokemonSpecies(name),
+        ])
 
-        if (!data?.id) {
+        if (!detailsData?.id) {
           throw new Error("Pokemon not found.")
         }
 
         if (!isCancelled) {
-          setPokemonDetails(data)
+          const englishEntry = speciesData?.flavor_text_entries?.find(
+            (entry) => entry?.language?.name === "en",
+          )
+          const normalizedFlavorText = englishEntry?.flavor_text
+            ? englishEntry.flavor_text.replace(/[\f\n\r]+/g, " ").trim()
+            : "No flavor text available."
+
+          setPokemonDetails(detailsData)
+          setFlavorText(normalizedFlavorText)
         }
       } catch (err) {
         if (!isCancelled) {
@@ -93,7 +107,7 @@ function PokemonDetails() {
   return (
     <div className="details-page">
       <Link to={backTo}>Back to list</Link>
-      <DetailCard pokemon={pokemonDetails} />
+      <DetailCard pokemon={pokemonDetails} flavorText={flavorText} />
     </div>
   )
 }

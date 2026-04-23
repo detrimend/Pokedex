@@ -1,8 +1,9 @@
 import SpriteFrame from "./SpriteFrame"
 import TypeFrame from "./TypeFrame"
+import AbilityFrame from "./AbilityFrame"
 import "./DetailCard.css"
 
-function DetailCard({ pokemon }) {
+function DetailCard({ pokemon, flavorText }) {
   return (
     <section className="detail-card-grid">
       <div className="detail-card-grid__name">
@@ -15,15 +16,10 @@ function DetailCard({ pokemon }) {
         <TypeFrame pokemon={pokemon} />
       </div>
       <div className="detail-card-grid__description">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          varius, leo ut ornare maximus, lorem turpis gravida purus, commodo
-          ornare turpis ipsum in dui. Praesent vel dui at dui consectetur mattis
-          at et massa. Quisque aliquam sodales ex nec lobortis. Pellentesque
-          quis imperdiet sapien, eu aliquet lacus. In finibus euismod urna, at
-          rutrum purus iaculis non. Nullam tristique est libero, vel semper
-          nulla bibendum nec.
-        </p>
+        <p>{flavorText}</p>
+      </div>
+      <div className="detail-card-grid__abilities">
+        <AbilityFrame pokemon={pokemon} />
       </div>
     </section>
   )
