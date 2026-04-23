@@ -6,9 +6,6 @@ export default function About() {
       <div className="about-card">
         <h1>About</h1>
         <p>
-          <b>Currently a work in progress</b>
-        </p>
-        <p>
           This project is based on the requirements from{" "}
           <a
             href="https://github.com/KasperKnop/WEB2/tree/main/08%20Assignment%202"
