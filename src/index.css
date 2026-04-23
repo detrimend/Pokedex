@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Nunito:wght@500;600;700&display=swap');
 
+
 :root {
-  --text: #52506a;
-  --text-h: #1f2138;
-  --bg: #fffdf7;
-  --border: #e8e1cf;
-  --code-bg: #f7f0de;
-  --accent: #ff7a2f;
-  --accent-bg: rgba(255, 122, 47, 0.14);
-  --accent-border: rgba(255, 122, 47, 0.45);
-  --social-bg: rgba(255, 244, 224, 0.65);
+  --text: #c2c8da;
+  --text-h: #f8f8ff;
+  --bg: #171a2a;
+  --border: #2f3550;
+  --code-bg: #232840;
+  --accent: #ff9b4a;
+  --accent-bg: rgba(255, 155, 74, 0.2);
+  --accent-border: rgba(255, 155, 74, 0.55);
+  --social-bg: rgba(53, 62, 95, 0.45);
   --shadow:
-    rgba(32, 19, 0, 0.12) 0 12px 24px -8px, rgba(32, 19, 0, 0.06) 0 8px 10px -10px;
+    rgba(0, 0, 0, 0.45) 0 12px 24px -8px, rgba(0, 0, 0, 0.35) 0 8px 10px -10px;
 
   --sans: 'Nunito', 'Avenir Next', 'Segoe UI', sans-serif;
   --heading: 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif;
@@ -19,7 +20,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -32,24 +33,50 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #c2c8da;
-    --text-h: #f8f8ff;
-    --bg: #171a2a;
-    --border: #2f3550;
-    --code-bg: #232840;
-    --accent: #ff9b4a;
-    --accent-bg: rgba(255, 155, 74, 0.2);
-    --accent-border: rgba(255, 155, 74, 0.55);
-    --social-bg: rgba(53, 62, 95, 0.45);
+:root[data-theme='light'] {
+  --text: #52506a;
+  --text-h: #1f2138;
+  --bg: #fffdf7;
+  --border: #e8e1cf;
+  --code-bg: #f7f0de;
+  --accent: #ff7a2f;
+  --accent-bg: rgba(255, 122, 47, 0.14);
+  --accent-border: rgba(255, 122, 47, 0.45);
+  --social-bg: rgba(255, 244, 224, 0.65);
+  --shadow:
+    rgba(32, 19, 0, 0.12) 0 12px 24px -8px, rgba(32, 19, 0, 0.06) 0 8px 10px -10px;
+  color-scheme: light;
+}
+
+:root[data-theme='light'] #social .button-icon {
+  filter: none;
+}
+
+/* Re-enable system theme later by setting document.documentElement.dataset.theme = 'auto'.
+   To keep dark mode forced, leave data-theme unset (or set it to 'dark'). */
+@media (prefers-color-scheme: light) {
+  :root[data-theme='auto'] {
+    --text: #52506a;
+    --text-h: #1f2138;
+    --bg: #fffdf7;
+    --border: #e8e1cf;
+    --code-bg: #f7f0de;
+    --accent: #ff7a2f;
+    --accent-bg: rgba(255, 122, 47, 0.14);
+    --accent-border: rgba(255, 122, 47, 0.45);
+    --social-bg: rgba(255, 244, 224, 0.65);
     --shadow:
-      rgba(0, 0, 0, 0.45) 0 12px 24px -8px, rgba(0, 0, 0, 0.35) 0 8px 10px -10px;
+      rgba(32, 19, 0, 0.12) 0 12px 24px -8px, rgba(32, 19, 0, 0.06) 0 8px 10px -10px;
+    color-scheme: light;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  :root[data-theme='auto'] #social .button-icon {
+    filter: none;
   }
+}
+
+#social .button-icon {
+  filter: invert(1) brightness(2);
 }
 
 body {
